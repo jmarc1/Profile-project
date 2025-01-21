@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href={{url_for('static', filename="/css/style.css") }}>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <div class="nav-list">
+                <a href="#About ">About Us</a>
+                <a href="">location </a>
+                <a href="/books">Books</a>
+                <a href="/logout">logout</a>
+            </div>        
+        </header>
+        <main>
+            <div class="container book-info">
+                <div class="book">
+                <h2>Title: {{favor_books[0]['title']}}</h2>
+                <p>by <em>Author's Name</em></p>
+                <section></section>
+            </div>
+                <div class="book_dash">
+                        <div class="reader_list">
+                            <ul>
+                                {%for reader in range(favor_books| length)%}
+                                <li>{{favor_books[reader]["first_name"]}} {{favor_books[reader]["last_name"]}}</li>
+                                {%endfor%}
+                            </ul>
+                        </div>
+                    <div>
+                        <h2>Add to User favorite</h2>
+                        <form action="/user_fav/{{favor_books[0]['books.id']}}" method="POST">
+                            <label for="user">User:</label>
+                            <select name="user">
+                                <option></option>
+                                {%for user in range(user_list | length)%}
+                                    <option value="{{user_list[user]['id']}}">{{user_list[user]["first_name"]}} {{user_list[user]['last_name']}}</option>
+                                {%endfor%}
+                            </select>
+                            <button>Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </body>
+</html>

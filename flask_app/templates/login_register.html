@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static' , filename= "css/style.css") }}>
+        <link rel="stylesheet" href={{ url_for('static', filename="/css/style.css") }}>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    </head>
+
+        <title>User Register</title>
+    </head>
+    <body>
+        <header>
+            <h1></h1>
+        </header>
+        <main class="main-index">
+            
+            <div class= "register-container">
+                <h2>Register</h2>
+                <form action="/register-user" method ="POST">
+                    <div class="flash">
+                        {%with messages = get_flashed_messages(category_filter = "register") %}
+                            {%if messages %}
+                                {%for message in messages %}
+                                    <p>{{message}}</p>
+                                {%endfor%}
+                            {%endif%}
+                        {%endwith%}
+                    </div>
+                    <div class="group-form">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name">
+                    </div>
+
+                    <div class="group-form">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name">
+                    </div>
+                    <div class="group-form">
+                        <label for="dob">DOB:</label>
+                        <input type="date" name="dob">
+                    </div>
+                    <div class="group-form">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email">
+                    </div>
+                        <div class="group-form">
+                        <label for="phone">Phone:</label>
+                        <input type="text" name="phone">
+                    </div>
+                    <div class="group-form">
+                        <label for="passwd">Password:</label>
+                        <input type="password" name="passwd">
+                    </div>
+                    
+                    <div class="group-form">
+                        <label for="confirm_passwd">Confirm-Password:</label>
+                        <input type="password" name="confirm_passwd">
+                    </div>
+                    <button type="submit" class="btn register submit">Submit</button>
+                </form>
+            </div>
+            <div class="login-container">
+                <h2>Login</h2>
+                <form action="/login" method="POST">
+                    <div class="flash">
+                        {%with messages = get_flashed_messages(category_filter = ["login"]) %}
+                            {%if messages %}
+                                {%for message in messages %}
+                                    <p>{{message}}</p>
+                                {%endfor%}
+                            {%endif%}
+                        {%endwith%}
+                    </div>
+                    <div class="group-form">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email">
+                    </div>
+                    <div class="group-form">
+                        <label for="passwd">Password:</label>
+                        <input type="password" name="passwd">
+                    </div>
+                <input type='submit' name="change_passwd" value="change-passwd" class="btn">
+                <input type="submit" name="change_passwd" value="login" class="btn">
+                </form>
+            </div>
+        </main>
+        <footer></footer>
+    </body>
+</html>

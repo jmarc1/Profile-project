@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!--<link rel="stylesheet" type="text/css" href={{url_for('static', filename="css/style.css")}}> -->
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <div class="container">
+                <div class="add_user">
+                    <h1>New User</h1>
+                    <form action="/users/add_user" method="POST">
+                        <div class="group-form">
+                            <label for="user_name">Name:</label>
+                            <input type="text" name="user_name">
+                        </div>
+                        <button class="btn">Add</button>
+                    </form>
+                </div>
+                <div class="all_users">
+                    <h1>All User</h1>
+                    <div class="lists">
+                        {%for user in users%}
+                            <a href="/view_user/{{user['id']}}">{{user[0]["user_name"]}}</a><br>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+            <a href="/books">Add Book</a>
+        </main>
+    </body>
+</html>

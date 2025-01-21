@@ -1,0 +1,53 @@
+* {
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+body {
+    display: grid;
+    grid-template: "header header header" "main main" "footer footer footer";
+    background-color: darkgray;
+}
+
+header {
+    border: solid 1px red;
+    width: 100%;
+    height: 60px;
+    padding: 0px auto;
+    margin: 10px auto;
+}
+
+.head-nav {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 0px auto;
+    height: 50px;
+}
+
+main {
+    width: 100%;
+    border: solid 1px green;
+}
+
+footer {
+    border: solid 1px blue;
+    width: 80%;
+    height: 30px;
+}
+
+#top-img {
+    justify-self: center;
+}
+
+.container {
+    display: flex;
+}
+
+.left-side {
+    width: 100px;
+}
+
+.right-side {
+    width: 100px;
+}
